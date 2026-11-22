@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+</head>
+<body>
+  <h1>
+    Hello, World!
+  </h1>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VON Publish Service</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: white;
+
+    /* VON NEON BACKGROUND */
+    background:
+        radial-gradient(circle at 20% 20%, #6a00ff 0%, transparent 35%),
+        radial-gradient(circle at 80% 30%, #00d9ff 0%, transparent 30%),
+        radial-gradient(circle at 50% 100%, #8a00ff 0%, transparent 40%),
+        #050510;
+
+    background-attachment: fixed;
+    padding: 25px 18px;
+}
+
+.container {
+    max-width: 760px;
+    margin: auto;
+}
+
+/* VON HEADER */
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 85px;
+    height: 85px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background: linear-gradient(
+        135deg,
+        #63d5ff,
+        #168bd1
+    );
+
+    color: #06305a;
+
+    font-size: 30px;
+    font-weight: 900;
+
+    box-shadow:
+        0 0 30px rgba(0, 217, 255, 0.7);
+}
+
+h1 {
+    margin-top: 18px;
+    font-size: 32px;
+}
+
+.subtitle {
+    margin-top: 8px;
+    color: #9ed8ff;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+/* TABS */
+
+.tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.tab {
+    flex: 1;
+    padding: 17px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    border: 2px solid #7b2cff;
+
+    background: rgba(20, 10, 55, 0.9);
+
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.tab.active {
+    background: #29106b;
+    border-color: #00d9ff;
+}
+
+/* CARD */
+
+.card {
+    background: rgba(12, 8, 35, 0.90);
+
+    border: 1px solid rgba(130, 50, 255, 0.5);
+
+    border-radius: 25px;
+
+    padding: 28px;
+
+    margin-bottom: 22px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.section-label {
+    display: inline-block;
+
+    padding: 8px 16px;
+
+    border: 1px solid #00d9ff;
+
+    border-radius: 20px;
+
+    color: #8eeaff;
+
+    font-size: 13px;
+
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #b9b3d0;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+
+    color: #d7d0ff;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    border: 1px solid #5932a8;
+
+    background: #08051c;
+
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+
+    margin-bottom: 16px;
+}
+
+input:focus {
+    border-color: #00d9ff;
+
+    box-shadow:
+        0 0 12px rgba(0, 217, 255, 0.3);
+}
+
+/* BUTTON */
+
+button {
+    width: 100%;
+
+    padding: 16px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6a00ff,
+            #008cff,
+            #00d9ff
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    border: 1px solid #00d9ff;
+}
+
+button:hover {
+    filter: brightness(1.15);
+}
+
+.status {
+    margin-top: 15px;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: #08051c;
+
+    color: #b9b3d0;
+
+    text-align: center;
+}
+
+/* SETTINGS */
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin: 8px 0 18px;
+
+    color: #d7d0ff;
+}
+
+.checkbox input {
+    width: auto;
+    margin: 0;
+}
+
+/* STATS */
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat {
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background: #08051c;
+
+    border: 1px solid #5932a8;
+
+    text-align: center;
+}
+
+.stat-title {
+    color: #aaa2c5;
+}
+
+.number {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.created {
+    color: #35e08b;
+}
+
+.failed {
+    color: #ff6868;
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px 12px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- VON HEADER -->
+
+    <div class="header">
+
+        <div class="logo">
+            VON
+        </div>
+
+        <h1>
+            VON Publish Service
+        </h1>
+
+        <div class="subtitle">
+            VON EDITION · ROBLOX PLACE MANAGER
+        </div>
+
+    </div>
+
+
+    <!-- TABS -->
+
+    <div class="tabs">
+
+        <div class="tab active">
+            Create Places
+        </div>
+
+        <div class="tab">
+            Logs / History
+        </div>
+
+    </div>
+
+
+    <!-- ROBLOX CONNECTION -->
+
+    <div class="card">
+
+        <div class="section-label">
+            ROBLOX CONNECTION
+        </div>
+
+        <h2>
+            Connect your Roblox account
+        </h2>
+
+        <p class="description">
+            Secure Roblox authorization demo.
+        </p>
+
+        <label>
+            ROBLOX COOKIE (.ROBLOSECURITY)
+        </label>
+
+        <input
+            type="password"
+            id="cookie"
+            placeholder="Demo field — do not enter your cookie"
+            autocomplete="off"
+        >
+
+        <button onclick="connectRoblox()">
+            Connect / Authorize Roblox
+        </button>
+
+        <div
+            class="status"
+            id="connectionStatus"
+        >
+            Not connected.
+        </div>
+
+    </div>
+
+
+    <!-- PLACE SETTINGS -->
+
+    <div class="card">
+
+        <div class="section-label">
+            PLACE SETTINGS
+        </div>
+
+        <h2>
+            Place Settings
+        </h2>
+
+        <p class="description">
+            Configure your VON place settings here.
+        </p>
+
+        <label>
+            TEMPLATE PLACE ID
+        </label>
+
+        <input
+            type="text"
+            id="placeId"
+            value="952068881"
+        >
+
+        <div class="row">
+
+            <div>
+                <label>
+                    PLACE AMOUNT
+                </label>
+
+                <input
+                    type="number"
+                    id="amount"
+                    value="5"
+                    min="1"
+                    max="100"
+                >
+            </div>
+
+            <div>
+                <label>
+                    PLACE NAME
+                </label>
+
+                <input
+                    type="text"
+                    id="placeName"
+                    placeholder="VON Place"
+                >
+            </div>
+
+        </div>
+
+        <label class="checkbox">
+
+            <input
+                type="checkbox"
+                id="privatePlace"
+            >
+
+            Create as Private Places
+
+        </label>
+
+        <button onclick="startCreate()">
+            START CREATE
+        </button>
+
+        <div
+            class="status"
+            id="result"
+        >
+            Ready.
+        </div>
+
+    </div>
+
+
+    <!-- STATUS -->
+
+    <div class="card">
+
+        <h2>
+            VON Creation Status
+        </h2>
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <div class="stat-title">
+                    Created
+                </div>
+
+                <div
+                    class="number created"
+                    id="created"
+                >
+                    0
+                </div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="stat-title">
+                    Failed
+                </div>
+
+                <div
+                    class="number failed"
+                    id="failed"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
